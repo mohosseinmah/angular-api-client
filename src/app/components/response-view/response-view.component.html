@@ -1,0 +1,41 @@
+<div *ngIf="httpResponse">
+    <span class="float-right mr-1 mt-1 cursor-pointer">
+        Status:&nbsp;
+        <span class="text-success font-weight-bold">{{httpResponse.status}} {{httpResponse.statusText}}</span>
+    </span>
+    <ul id="response-tabs" class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" id="response-body-tab" data-toggle="tab" href="#response-body-div" role="tab"
+               aria-controls="response-body-div" aria-selected="false">Body</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="response-headers-tab" data-toggle="tab" href="#response-headers-div" role="tab"
+               aria-controls="response-headers-div" aria-selected="true">Headers</a>
+        </li>
+    </ul>
+    <div id="response-tab-content" class="tab-content mt-1">
+        <div class="tab-pane fade show active" id="response-body-div" role="tabpanel" aria-labelledby="body-tab">
+            <div class="form-group">
+                <textarea name="body" id="response-body" class="form-control" rows="10">
+                    {{httpResponse.body}}
+                </textarea>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="response-headers-div" role="tabpanel" aria-labelledby="headers-tab">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let httpHeader of httpResponse.headers">
+                    <td>{{httpHeader.key}}</td>
+                    <td>{{httpHeader.value}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
