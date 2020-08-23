@@ -1,0 +1,50 @@
+<form class="mt-2">
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <div class="input-group">
+                <select name="method" class="form-control col-sm-2" [(ngModel)]="method">
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                </select>
+                <input type="text" name="url" id="url-input" [ngClass]="urlInputClass"
+                       placeholder="Enter request URL" [(ngModel)]="url" (change)="handleUrlChange()">
+            </div>
+        </div>
+        <div class="col-sm">
+            <span class="btn btn-primary btn-block" (click)="sendRequest()">Send</span>
+        </div>
+    </div>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" id="request-headers-tab" data-toggle="tab" href="#request-headers-div" role="tab"
+               aria-controls="request-headers-div" aria-selected="true">Headers</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="request-body-tab" data-toggle="tab" href="#request-body-div" role="tab"
+               aria-controls="request-body-div" aria-selected="false">Body</a>
+        </li>
+    </ul>
+    <div id="request-tab-content" class="tab-content mt-1">
+        <div class="tab-pane fade show active" id="request-headers-div" role="tabpanel"
+             aria-labelledby="request-headers-tab">
+            <span class="btn btn-success mb-2" (click)="addHeader()">
+                <i class='fas fa-plus'></i>
+            </span>
+            <div class="input-group row ml-0 mr-0 mb-1" *ngFor="let header of headers; let i = index">
+                <input type="text" class="form-control col-sm-3" placeholder="Key" value="{{header.key}}"
+                       [(ngModel)]="headers[i].key">
+                <input type="text" class="form-control col-sm" placeholder="Value" value="{{header.value}}"
+                       [(ngModel)]="headers[i].value">
+                <div class="input-group-append">
+                    <span class="btn btn-danger" (click)="removeHeader(i)"><i class="fas fa-times"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="request-body-div" role="tabpanel" aria-labelledby="request-body-tab">
+            <div class="form-group">
+                <textarea name="request-body" id="request-body" class="form-control" rows="10"
+                          [(ngModel)]="body"></textarea>
+            </div>
+        </div>
+    </div>
+</form>
