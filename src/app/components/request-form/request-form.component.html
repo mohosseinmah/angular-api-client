@@ -31,19 +31,17 @@
                 <i class='fas fa-plus'></i>
             </span>
             <div class="input-group row ml-0 mr-0 mb-1" *ngFor="let header of headers; let i = index">
-                <input type="text" class="form-control col-sm-3" placeholder="Key" value="{{header.key}}"
-                       [(ngModel)]="headers[i].key">
-                <input type="text" class="form-control col-sm" placeholder="Value" value="{{header.value}}"
-                       [(ngModel)]="headers[i].value">
+                <input name="header{{i}}key" type="text" class="form-control col-sm-3" placeholder="Key"
+                       [(ngModel)]="header.key">
+                <input name="header{{i}}value" type="text" class="form-control col-sm" placeholder="Value"
+                       [(ngModel)]="header.value">
                 <div class="input-group-append">
                     <span class="btn btn-danger" (click)="removeHeader(i)"><i class="fas fa-times"></i></span>
                 </div>
             </div>
         </div>
         <div class="tab-pane fade" id="request-body-div" role="tabpanel" aria-labelledby="request-body-tab">
-            <div class="form-group">
-                <div id="request-body-editor" style="height:200px; width:100%"></div>
-            </div>
+            <json-editor (valueChange)="body=$event"></json-editor>
         </div>
     </div>
 </form>

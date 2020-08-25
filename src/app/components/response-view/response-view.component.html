@@ -16,9 +16,7 @@
     <div id="response-tab-content" class="tab-content mt-1">
         <div class="tab-pane fade show active" id="response-body-div" role="tabpanel" aria-labelledby="body-tab">
             <div class="form-group">
-                <textarea name="body" id="response-body" class="form-control" rows="10">
-                    {{httpResponse.body}}
-                </textarea>
+                <json-editor [value]="httpResponse.body" read-only></json-editor>
             </div>
         </div>
         <div class="tab-pane fade" id="response-headers-div" role="tabpanel" aria-labelledby="headers-tab">

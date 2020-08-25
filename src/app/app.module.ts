@@ -6,12 +6,14 @@ import { RequestFormComponent } from './components/request-form/request-form.com
 import {HttpClientService} from "./services/http-client.service";
 import {FormsModule} from "@angular/forms";
 import { ResponseViewComponent } from './components/response-view/response-view.component';
+import { JsonEditorComponent } from './components/json-editor/json-editor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RequestFormComponent,
-    ResponseViewComponent
+    ResponseViewComponent,
+    JsonEditorComponent
   ],
     imports: [
         BrowserModule,
