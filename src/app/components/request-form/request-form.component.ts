@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClientService} from "../../services/http-client.service";
+import {HttpClientService} from "../../services/http-client/http-client.service";
 import {HttpHeader} from "../../models/http-header";
 
 @Component({
@@ -18,7 +18,7 @@ export class RequestFormComponent implements OnInit {
         this.method = "GET";
         this.url = "";
         this.urlInputClass = ["form-control"];
-        this.headers = [{key: "Content-Type", value: "application/json"}];
+        this.headers = [];
         this.body = "";
     }
 

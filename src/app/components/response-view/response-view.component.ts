@@ -1,5 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import {HttpClientService} from "../../services/http-client.service";
+import {HttpClientService} from "../../services/http-client/http-client.service";
 import {Subscription} from "rxjs";
 import {HttpResponse} from "../../models/http-response";
 

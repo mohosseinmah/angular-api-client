@@ -5,6 +5,11 @@ import {Ace} from 'ace-builds';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-eclipse';
 
+
+const ECLIPSE_THEME = "ace/theme/eclipse";
+const JSON_MODE = "ace/mode/json";
+const STARTING_POSITION = {row: 0, column: 0};
+
 @Component({
     selector: 'json-editor',
     templateUrl: './json-editor.component.html',
@@ -25,8 +30,8 @@ export class JsonEditorComponent implements AfterViewInit {
 
     ngAfterViewInit(): void {
         this.aceEditor = ace.edit(this.elementRef.nativeElement);
-        this.aceEditor.getSession().setMode("ace/mode/json");
-        this.aceEditor.setTheme("ace/theme/eclipse");
+        this.aceEditor.getSession().setMode(JSON_MODE);
+        this.aceEditor.setTheme(ECLIPSE_THEME);
         this.aceEditor.setReadOnly(this.readOnly);
         this.setEditorValue();
     }
@@ -40,7 +45,7 @@ export class JsonEditorComponent implements AfterViewInit {
 
     private setEditorValue() {
         this.aceEditor.setValue(this._value);
-        this.aceEditor.moveCursorToPosition({row: 0, column: 0});
+        this.aceEditor.moveCursorToPosition(STARTING_POSITION);
     }
 
     updateValue(): void {

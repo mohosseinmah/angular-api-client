@@ -1,7 +1,8 @@
-<div *ngIf="httpResponse">
-    <span class="float-right mr-1 mt-1 cursor-pointer">
-        Status:&nbsp;
-        <span class="text-success font-weight-bold">{{httpResponse.status}} {{httpResponse.statusText}}</span>
+<spinner *ngIf="httpResponse&&httpResponse.status===1"></spinner>
+<div *ngIf="httpResponse&&httpResponse.status>=100">
+    <span class="float-right mr-1 mt-1 cursor-pointer text-success"
+          data-toggle="tooltip" data-placement="bottom" title="Status">
+        {{httpResponse.status}}&nbsp;{{httpResponse.statusText}}
     </span>
     <ul id="response-tabs" class="nav nav-tabs">
         <li class="nav-item">
