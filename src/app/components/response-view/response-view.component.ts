@@ -22,5 +22,4 @@ export class ResponseViewComponent implements OnDestroy {
     ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
-
 }

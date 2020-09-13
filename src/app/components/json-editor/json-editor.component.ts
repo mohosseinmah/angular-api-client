@@ -12,8 +12,7 @@ const STARTING_POSITION = {row: 0, column: 0};
 
 @Component({
     selector: 'json-editor',
-    templateUrl: './json-editor.component.html',
-    styleUrls: ['./json-editor.component.css']
+    templateUrl: './json-editor.component.html'
 })
 export class JsonEditorComponent implements AfterViewInit {
     aceEditor: Ace.Editor;
@@ -43,7 +42,7 @@ export class JsonEditorComponent implements AfterViewInit {
         }
     }
 
-    private setEditorValue() {
+    private setEditorValue(): void {
         this.aceEditor.setValue(this._value);
         this.aceEditor.moveCursorToPosition(STARTING_POSITION);
     }

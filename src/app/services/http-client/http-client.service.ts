@@ -18,7 +18,7 @@ export class HttpClientService {
         this.httpResponseSubject = new Subject<HttpResponse>();
     }
 
-    call(request: HttpRequest) {
+    call(request: HttpRequest): void {
         const nextHttpResponseSubject = (httpResponse: XMLHttpRequest) => this.httpResponseSubject.next(this.mapper.as(httpResponse));
         const pendingHttpResponseSubject = () => this.httpResponseSubject.next(PENDING_RESPONSE);
 

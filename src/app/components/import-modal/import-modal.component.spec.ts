@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {ResponseViewComponent} from './response-view.component';
+import {ImportModalComponent} from './import-modal.component';
 
-describe('ResponseViewComponent', () => {
-    let component: ResponseViewComponent;
-    let fixture: ComponentFixture<ResponseViewComponent>;
+describe('ImportModalComponent', () => {
+    let component: ImportModalComponent;
+    let fixture: ComponentFixture<ImportModalComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [ResponseViewComponent]
+            declarations: [ImportModalComponent]
         })
             .compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(ResponseViewComponent);
+        fixture = TestBed.createComponent(ImportModalComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

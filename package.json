@@ -1,6 +1,6 @@
 {
   "name": "angular-api-client",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -20,11 +20,13 @@
     "@angular/platform-browser-dynamic": "~10.0.9",
     "@angular/router": "~10.0.9",
     "@fortawesome/fontawesome-free": "^5.14.0",
+    "@types/yargs-parser": "^15.0.0",
+    "ace-builds": "^1.4.12",
     "bootstrap": "^4.5.2",
     "jquery": "^3.5.1",
-    "ace-builds": "^1.4.12",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
+    "yargs-parser": "^20.0.0",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
