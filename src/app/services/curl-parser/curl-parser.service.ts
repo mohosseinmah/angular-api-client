@@ -162,6 +162,14 @@ const OPTIONS: Options = {
     ]
 };
 
+function clean(command: string): string {
+    command = command.trim().replace(/\\/g, '').replace(/\n/g, '');
+    while (command.includes('  ')) {
+        command = command.replace('  ', ' ');
+    }
+    return command;
+}
+
 @Injectable({
     providedIn: 'root'
 })
@@ -173,6 +181,6 @@ export class CurlParserService {
     }
 
     parse(curlCommand: string): void {
-        this.curlArgsSubject.next(yargsParser(curlCommand, OPTIONS));
+        this.curlArgsSubject.next(yargsParser(clean(curlCommand), OPTIONS));
     }
 }

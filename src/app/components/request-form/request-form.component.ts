@@ -46,7 +46,7 @@ export class RequestFormComponent implements OnDestroy {
 
     private handleCurlArgs(curlArgs: any): void {
         this.method = curlArgs.request ? curlArgs.request : HttpMethod.GET;
-        this.url = curlArgs._[1] ? curlArgs._[1] : EMPTY_STRING;
+        this.url = curlArgs._[1] ? curlArgs._[1].replace(/'/g, EMPTY_STRING).replace(/"/g, EMPTY_STRING) : EMPTY_STRING;
         this.headers = [];
         if (curlArgs.header) {
             if (typeof curlArgs.header === "string") {
