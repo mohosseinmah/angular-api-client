@@ -14,6 +14,7 @@
             <span class="btn btn-primary btn-block" (click)="sendRequest()">Send</span>
         </div>
     </div>
+    <code-modal [method]="method" [url]="url" [headers]="headers" [body]="body"></code-modal>
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link active" id="request-headers-tab" data-toggle="tab" href="#request-headers-div" role="tab"

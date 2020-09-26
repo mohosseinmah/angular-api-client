@@ -15,8 +15,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="import-textarea">Paste curl command</label>
-                        <textarea name="" id="import-textarea" cols="30" rows="10" class="form-control"
+                        <label for="import-textarea">Paste cURL command</label>
+                        <textarea name="curl" id="import-textarea" cols="30" rows="10" class="form-control code"
                                   placeholder="curl [options...] <url>" [(ngModel)]="curlCommand"></textarea>
                     </div>
                     <button class="btn btn-primary" [disabled]="!curlCommand" data-dismiss="modal"

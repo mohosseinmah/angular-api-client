@@ -5,8 +5,7 @@ import {HttpResponse} from "../../models/http-response";
 
 @Component({
     selector: 'response-view',
-    templateUrl: './response-view.component.html',
-    styleUrls: ['./response-view.component.css']
+    templateUrl: './response-view.component.html'
 })
 export class ResponseViewComponent implements OnDestroy {
     httpResponse: HttpResponse;
