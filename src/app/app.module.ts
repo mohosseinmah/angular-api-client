@@ -11,7 +11,7 @@ import {SpinnerComponent} from './components/spinner/spinner.component';
 import {HttpResponseMapperService} from "./services/http-response-mapper/http-response-mapper.service";
 import {ImportModalComponent} from './components/import-modal/import-modal.component';
 import {CurlParserService} from "./services/curl-parser/curl-parser.service";
-import { CodeModalComponent } from './components/code-modal/code-modal.component';
+import {CodeModalComponent} from './components/code-modal/code-modal.component';
 
 @NgModule({
     declarations: [

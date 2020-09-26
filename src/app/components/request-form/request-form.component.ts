@@ -44,26 +44,6 @@ export class RequestFormComponent implements OnDestroy {
         this.subscription.unsubscribe();
     }
 
-    private handleCurlArgs(curlArgs: any): void {
-        this.method = curlArgs.request ? curlArgs.request : HttpMethod.GET;
-        this.url = curlArgs._[1] ? curlArgs._[1].replace(/'/g, EMPTY_STRING).replace(/"/g, EMPTY_STRING) : EMPTY_STRING;
-        this.headers = [];
-        if (curlArgs.header) {
-            if (typeof curlArgs.header === "string") {
-                this.pushHeader(curlArgs.header);
-            } else if (Array.isArray(curlArgs.header)) {
-                curlArgs.header.forEach((header: string) => this.pushHeader(header));
-            }
-        }
-        this.body = getData(curlArgs);
-        this.handleUrlChange();
-    }
-
-    private pushHeader(headerKeyValue: string): void {
-        const headerParts = headerKeyValue.split(":");
-        this.headers.push({key: headerParts[0].trim(), value: headerParts[1].trim()});
-    }
-
     handleUrlChange(): void {
         if (!this.url) {
             this.urlInputClass.push("is-invalid");
@@ -86,5 +66,25 @@ export class RequestFormComponent implements OnDestroy {
             return;
         }
         this.client.call({method: this.method, url: this.url, headers: this.headers, body: this.body});
+    }
+
+    private handleCurlArgs(curlArgs: any): void {
+        this.method = curlArgs.request ? curlArgs.request : HttpMethod.GET;
+        this.url = curlArgs._[1] ? curlArgs._[1].replace(/'/g, EMPTY_STRING).replace(/"/g, EMPTY_STRING) : EMPTY_STRING;
+        this.headers = [];
+        if (curlArgs.header) {
+            if (typeof curlArgs.header === "string") {
+                this.pushHeader(curlArgs.header);
+            } else if (Array.isArray(curlArgs.header)) {
+                curlArgs.header.forEach((header: string) => this.pushHeader(header));
+            }
+        }
+        this.body = getData(curlArgs);
+        this.handleUrlChange();
+    }
+
+    private pushHeader(headerKeyValue: string): void {
+        const headerParts = headerKeyValue.split(":");
+        this.headers.push({key: headerParts[0].trim(), value: headerParts[1].trim()});
     }
 }

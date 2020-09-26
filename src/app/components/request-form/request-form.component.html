@@ -2,46 +2,46 @@
     <div class="form-group row">
         <div class="col-sm-10">
             <div class="input-group">
-                <select name="method" class="form-control col-sm-2" [(ngModel)]="method">
+                <select [(ngModel)]="method" class="form-control col-sm-2" name="method">
                     <option value="GET">GET</option>
                     <option value="POST">POST</option>
                 </select>
-                <input type="text" name="url" id="url-input" [ngClass]="urlInputClass"
-                       placeholder="Enter request URL" [(ngModel)]="url" (change)="handleUrlChange()">
+                <input (change)="handleUrlChange()" [(ngModel)]="url" [ngClass]="urlInputClass" id="url-input"
+                       name="url" placeholder="Enter request URL" type="text">
             </div>
         </div>
         <div class="col-sm">
-            <span class="btn btn-primary btn-block" (click)="sendRequest()">Send</span>
+            <span (click)="sendRequest()" class="btn btn-primary btn-block">Send</span>
         </div>
     </div>
-    <code-modal [method]="method" [url]="url" [headers]="headers" [body]="body"></code-modal>
+    <code-modal [body]="body" [headers]="headers" [method]="method" [url]="url"></code-modal>
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link active" id="request-headers-tab" data-toggle="tab" href="#request-headers-div" role="tab"
-               aria-controls="request-headers-div" aria-selected="true">Headers</a>
+            <a aria-controls="request-headers-div" aria-selected="true" class="nav-link active" data-toggle="tab" href="#request-headers-div"
+               id="request-headers-tab" role="tab">Headers</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="request-body-tab" data-toggle="tab" href="#request-body-div" role="tab"
-               aria-controls="request-body-div" aria-selected="false">Body</a>
+            <a aria-controls="request-body-div" aria-selected="false" class="nav-link" data-toggle="tab" href="#request-body-div"
+               id="request-body-tab" role="tab">Body</a>
         </li>
     </ul>
-    <div id="request-tab-content" class="tab-content mt-1">
-        <div class="tab-pane fade show active" id="request-headers-div" role="tabpanel"
-             aria-labelledby="request-headers-tab">
-            <span class="btn btn-success mb-2" (click)="addHeader()">
+    <div class="tab-content mt-1" id="request-tab-content">
+        <div aria-labelledby="request-headers-tab" class="tab-pane fade show active" id="request-headers-div"
+             role="tabpanel">
+            <span (click)="addHeader()" class="btn btn-success mb-2">
                 <i class='fas fa-plus'></i>
             </span>
-            <div class="input-group row ml-0 mr-0 mb-1" *ngFor="let header of headers; let i = index">
-                <input name="header{{i}}key" type="text" class="form-control col-sm-3" placeholder="Key"
-                       [(ngModel)]="header.key">
-                <input name="header{{i}}value" type="text" class="form-control col-sm" placeholder="Value"
-                       [(ngModel)]="header.value">
+            <div *ngFor="let header of headers; let i = index" class="input-group row ml-0 mr-0 mb-1">
+                <input [(ngModel)]="header.key" class="form-control col-sm-3" name="header{{i}}key" placeholder="Key"
+                       type="text">
+                <input [(ngModel)]="header.value" class="form-control col-sm" name="header{{i}}value" placeholder="Value"
+                       type="text">
                 <div class="input-group-append">
-                    <span class="btn btn-danger" (click)="removeHeader(i)"><i class="fas fa-times"></i></span>
+                    <span (click)="removeHeader(i)" class="btn btn-danger"><i class="fas fa-times"></i></span>
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="request-body-div" role="tabpanel" aria-labelledby="request-body-tab">
+        <div aria-labelledby="request-body-tab" class="tab-pane fade" id="request-body-div" role="tabpanel">
             <json-editor [(value)]="body"></json-editor>
         </div>
     </div>

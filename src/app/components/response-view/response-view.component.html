@@ -1,26 +1,26 @@
 <spinner *ngIf="httpResponse&&httpResponse.status===1"></spinner>
 <div *ngIf="httpResponse&&httpResponse.status>=100">
     <span class="float-right mr-1 mt-1 cursor-pointer text-success"
-          data-toggle="tooltip" data-placement="bottom" title="Status">
+          data-placement="bottom" data-toggle="tooltip" title="Status">
         {{httpResponse.status}}&nbsp;{{httpResponse.statusText}}
     </span>
-    <ul id="response-tabs" class="nav nav-tabs">
+    <ul class="nav nav-tabs" id="response-tabs">
         <li class="nav-item">
-            <a class="nav-link active" id="response-body-tab" data-toggle="tab" href="#response-body-div" role="tab"
-               aria-controls="response-body-div" aria-selected="false">Body</a>
+            <a aria-controls="response-body-div" aria-selected="false" class="nav-link active" data-toggle="tab" href="#response-body-div"
+               id="response-body-tab" role="tab">Body</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="response-headers-tab" data-toggle="tab" href="#response-headers-div" role="tab"
-               aria-controls="response-headers-div" aria-selected="true">Headers</a>
+            <a aria-controls="response-headers-div" aria-selected="true" class="nav-link" data-toggle="tab" href="#response-headers-div"
+               id="response-headers-tab" role="tab">Headers</a>
         </li>
     </ul>
-    <div id="response-tab-content" class="tab-content mt-1">
-        <div class="tab-pane fade show active" id="response-body-div" role="tabpanel" aria-labelledby="body-tab">
+    <div class="tab-content mt-1" id="response-tab-content">
+        <div aria-labelledby="body-tab" class="tab-pane fade show active" id="response-body-div" role="tabpanel">
             <div class="form-group">
                 <json-editor [value]="httpResponse.body" read-only></json-editor>
             </div>
         </div>
-        <div class="tab-pane fade" id="response-headers-div" role="tabpanel" aria-labelledby="headers-tab">
+        <div aria-labelledby="headers-tab" class="tab-pane fade" id="response-headers-div" role="tabpanel">
             <table class="table">
                 <thead class="thead-light">
                 <tr>

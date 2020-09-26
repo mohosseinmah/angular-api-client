@@ -10,6 +10,14 @@ const ECLIPSE_THEME = "ace/theme/eclipse";
 const JSON_MODE = "ace/mode/json";
 const STARTING_POSITION = {row: 0, column: 0};
 
+function format(text: string): string {
+    try {
+        return JSON.stringify(JSON.parse(text), null, 4);
+    } catch (e) {
+        return text;
+    }
+}
+
 @Component({
     selector: 'json-editor',
     templateUrl: './json-editor.component.html'
@@ -19,12 +27,19 @@ export class JsonEditorComponent implements AfterViewInit {
 
     @ViewChild("ace") elementRef: ElementRef<HTMLDivElement>;
     @Input("read-only") readOnly: boolean;
-
-    private _value: string;
     @Output() valueChange: EventEmitter<string>;
 
     constructor() {
         this.valueChange = new EventEmitter<string>();
+    }
+
+    private _value: string;
+
+    @Input() set value(val: string) {
+        this._value = val;
+        if (this.aceEditor) {
+            this.setEditorValue();
+        }
     }
 
     ngAfterViewInit(): void {
@@ -35,20 +50,13 @@ export class JsonEditorComponent implements AfterViewInit {
         this.setEditorValue();
     }
 
-    @Input() set value(val: string) {
-        this._value = val;
-        if (this.aceEditor) {
-            this.setEditorValue();
-        }
-    }
-
-    private setEditorValue(): void {
-        this.aceEditor.setValue(this._value);
-        this.aceEditor.moveCursorToPosition(STARTING_POSITION);
-    }
-
     updateValue(): void {
         this._value = this.aceEditor.getValue();
         this.valueChange.emit(this._value);
+    }
+
+    private setEditorValue(): void {
+        this.aceEditor.setValue(format(this._value));
+        this.aceEditor.moveCursorToPosition(STARTING_POSITION);
     }
 }

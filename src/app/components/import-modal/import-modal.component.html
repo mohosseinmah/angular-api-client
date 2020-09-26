@@ -1,13 +1,13 @@
 <div>
-    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#import-modal">
+    <button class="btn btn-light" data-target="#import-modal" data-toggle="modal" type="button">
         Import
     </button>
-    <div class="modal fade" id="import-modal" tabindex="-1" aria-labelledby="import-modal-label" aria-hidden="true">
+    <div aria-hidden="true" aria-labelledby="import-modal-label" class="modal fade" id="import-modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="import-modal-label">Import</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
                             <span aria-hidden="true">
                                 &times;
                             </span>
@@ -16,11 +16,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="import-textarea">Paste cURL command</label>
-                        <textarea name="curl" id="import-textarea" cols="30" rows="10" class="form-control code"
-                                  placeholder="curl [options...] <url>" [(ngModel)]="curlCommand"></textarea>
+                        <textarea [(ngModel)]="curlCommand" class="form-control code" cols="30" id="import-textarea" name="curl"
+                                  placeholder="curl [options...] <url>" rows="10"></textarea>
                     </div>
-                    <button class="btn btn-primary" [disabled]="!curlCommand" data-dismiss="modal"
-                            (click)="handleClick()">
+                    <button (click)="handleClick()" [disabled]="!curlCommand" class="btn btn-primary"
+                            data-dismiss="modal">
                         Continue
                     </button>
                 </div>
